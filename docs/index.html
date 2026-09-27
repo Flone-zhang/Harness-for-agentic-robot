@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="HarnessVLA: a stateful hierarchical harness with dynamic memory and Watchdog recovery for long-horizon robot manipulation. V03 manuscript, Piper experiments, and T1 demonstration.">
+  <meta name="theme-color" content="#126352">
+  <meta property="og:title" content="HarnessVLA — Long-Horizon Robot Manipulation">
+  <meta property="og:description" content="A fixed π0 executor. Explicit task state. A closed-loop runtime. Explore the V03 manuscript, Piper experiments, and T1 demonstration.">
+  <meta property="og:type" content="website">
+  <title>HarnessVLA | Long-Horizon Robot Manipulation</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='10' fill='%23126352'/%3E%3Cpath d='M11 10v20m18-20v20M11 20h18' stroke='white' stroke-width='4'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="assets/styles.css">
+  <script src="assets/script.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main" data-i18n="skip">Skip to content</a>
+  <header class="site-header">
+    <div class="nav-wrap">
+      <a class="brand" href="#main" aria-label="HarnessVLA home"><span class="brand-mark" aria-hidden="true">H</span>HarnessVLA</a>
+      <nav aria-label="Main navigation">
+        <a href="#overview" data-i18n="navOverview">Overview</a>
+        <a href="#demo" data-i18n="navDemo">Demo</a>
+        <a href="#method" data-i18n="navMethod">Method</a>
+        <a href="#results" data-i18n="navResults">Results</a>
+      </nav>
+      <button class="language-button" id="language-toggle" type="button" aria-label="切换为中文">中文 <span aria-hidden="true">↔</span></button>
+    </div>
+  </header>
+  <main id="main">
+    <section class="hero container" aria-labelledby="paper-title">
+      <div class="eyebrow"><span data-i18n="heroTag">LONG-HORIZON ROBOT MANIPULATION</span><span class="draft-tag" data-i18n="draftTag">V03 · Research draft</span></div>
+      <h1 id="paper-title"><span class="hero-name">Harness<span>VLA</span></span><span class="hero-title" data-i18n="title">A Stateful Hierarchical Harness with Dynamic Memory and Watchdog Recovery for Long-Horizon Robot Manipulation</span></h1>
+      <p class="hero-description" data-i18n="heroDescription">A fixed π0 executor, explicit task state, and a closed-loop runtime that plans, remembers, verifies, and recovers.</p>
+      <p class="author-line" data-i18n="authors">Anonymous Authors · V03 manuscript</p>
+      <div class="resource-links">
+        <a class="button primary" href="assets/papers/HarnessVLA-V03-EN.docx" download><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M7 3h7l4 4v14H7zM14 3v5h4M10 12h5m-5 4h5"/></svg><span data-i18n="paperButton">Paper · Word (EN)</span></a>
+        <a class="button" href="https://github.com/Flone-zhang/Harness-for-agentic-robot" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="m8 7-5 5 5 5m8-10 5 5-5 5m-3-12-2 14"/></svg><span data-i18n="codeButton">Code</span></a>
+        <a class="button" href="#demo"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="m9 5 11 7-11 7z"/></svg><span data-i18n="demoButton">Watch demo</span></a>
+      </div>
+      <div class="hero-evidence">
+        <div><strong>85<span>%</span></strong><span data-i18n="stat1">17 / 20 successful trials</span></div>
+        <div><strong>+70<span data-i18n="pp">pp</span></strong><span data-i18n="stat2">over monolithic π0</span></div>
+        <div><strong>Piper</strong><span data-i18n="stat3">physical robot evaluation</span></div>
+      </div>
+      <figure class="architecture-figure">
+        <button class="figure-button" type="button" data-figure="assets/images/architecture.png" data-caption="architectureCaption" aria-label="Enlarge architecture figure">
+          <img src="assets/images/architecture.webp" width="2600" height="1462" alt="HarnessVLA architecture: decision, planning, execution and Watchdog monitoring around dynamic memory and the Piper robot" fetchpriority="high">
+          <span class="enlarge-hint" data-i18n="enlarge">View full size ↗</span>
+        </button>
+        <figcaption data-i18n="architectureCaption">A stateful execution loop connects the multimodal agent, dynamic memory, registered π0 skills, and Watchdog feedback.</figcaption>
+      </figure>
+    </section>
+
+    <section class="section container overview" id="overview" aria-labelledby="overview-title">
+      <div class="section-label" data-i18n="overviewLabel">01 / OVERVIEW</div>
+      <div class="section-grid">
+        <h2 id="overview-title" data-i18n="overviewTitle">Long tasks need a runtime that keeps track.</h2>
+        <div class="prose">
+          <p data-i18n="abstract1">Vision-language-action policies translate language and images into continuous robot actions. Over long task sequences, execution remains vulnerable to accumulated errors, implicit subtask boundaries, and loss of task state.</p>
+          <p data-i18n="abstract2">HarnessVLA separates a fixed π0 executor from task decomposition, dynamic memory, typed skill invocation, and Watchdog monitoring. The agent assembles current observations, task state, registered tools, and validity-filtered persistent facts before each decision.</p>
+          <p data-i18n="abstract3">On the physical Piper robot, the complete system achieves 17/20 successful trials (85%), compared with 3/20 (15%) for monolithic π0. Independent component comparisons identify subtask decomposition as the largest observed isolated improvement.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="demo-section" id="demo" aria-labelledby="demo-title">
+      <div class="container section">
+        <div class="section-label" data-i18n="demoLabel">02 / IN THE REAL WORLD</div>
+        <div class="section-heading"><h2 id="demo-title" data-i18n="demoTitle">One instruction. A sequence of actions.</h2><span class="video-meta">T1 · 01:45 · Piper</span></div>
+        <p class="demo-description" data-i18n="demoDescription">Place the red block in the blue box, place the green block in the bowl, then press the red button.</p>
+        <div class="video-shell">
+          <video id="t1-video" controls playsinline preload="metadata" poster="assets/images/t1-poster.jpg" aria-label="T1 sequential tidying demonstration on the Piper robot">
+            <source src="assets/videos/T1_edited.mp4" type="video/mp4">
+            <p data-i18n="videoFallback">Your browser cannot play this video. Use the download link below.</p>
+          </video>
+        </div>
+        <div class="video-caption"><p data-i18n="videoCaption">Edited T1 demonstration supplied with the manuscript. This clip illustrates execution; the success rates below come from the reported trial counts.</p><a href="assets/videos/T1_edited.mp4" download data-i18n="downloadVideo">Download video ↓</a></div>
+        <p id="video-error" class="video-error" hidden data-i18n="videoError">The video could not be loaded. Please try the download link.</p>
+      </div>
+    </section>
+
+    <section class="section container" id="method" aria-labelledby="method-title">
+      <div class="section-label" data-i18n="methodLabel">03 / METHOD</div>
+      <h2 id="method-title" data-i18n="methodTitle">An explicit loop around the policy.</h2>
+      <p class="section-intro" data-i18n="methodIntro">Only the execution layer drives the robot. The surrounding harness manages the goal, state, skill contracts, and completion evidence.</p>
+      <ol class="method-flow">
+        <li><span class="flow-number">01</span><h3 data-i18n="flow1Title">Decide</h3><p data-i18n="flow1Text">Assemble observations and valid memory into the multimodal agent’s context.</p></li>
+        <li><span class="flow-number">02</span><h3 data-i18n="flow2Title">Plan</h3><p data-i18n="flow2Text">Generate ordered subtasks with preconditions, completion predicates, and action budgets.</p></li>
+        <li><span class="flow-number">03</span><h3 data-i18n="flow3Title">Execute</h3><p data-i18n="flow3Text">Invoke registered skills through typed interfaces using the fixed π0 executor.</p></li>
+        <li><span class="flow-number">04</span><h3 data-i18n="flow4Title">Verify</h3><p data-i18n="flow4Text">Use Watchdog feedback to wait, end, replay, recover, or replan.</p></li>
+      </ol>
+      <div class="method-details">
+        <article>
+          <div class="detail-heading"><span class="detail-index">M</span><h3 data-i18n="memoryTitle">Dynamic memory, with fact validity.</h3></div>
+          <p data-i18n="memoryText">Environment state Eₜ, task state Tₜ, the tool index Kₜ, and persistent facts Fₜ form the memory window. Fresh observations override contradictory state facts; only valid facts enter the next decision.</p>
+          <figure><button class="figure-button" type="button" data-figure="assets/images/memory.png" data-caption="memoryCaption" aria-label="Enlarge dynamic memory figure"><img src="assets/images/memory.webp" width="2600" height="1462" loading="lazy" alt="Dynamic memory retrieval with task, tool, environment and persistent facts; validity filtering and contradiction checks"><span class="enlarge-hint" data-i18n="enlarge">View full size ↗</span></button><figcaption data-i18n="memoryCaption">Persistent facts survive a context reset, while validity checks keep stale state out of the agent context.</figcaption></figure>
+        </article>
+        <article>
+          <div class="detail-heading"><span class="detail-index purple">W</span><h3 data-i18n="watchdogTitle">Bounded recovery, explicit transitions.</h3></div>
+          <p data-i18n="watchdogText">The Watchdog checks progress and completion evidence at a skill-specific frequency. Failed or stagnant execution triggers bounded retries or recovery; exhausted budgets lead to suffix replanning or failure.</p>
+          <figure><button class="figure-button" type="button" data-figure="assets/images/watchdog.png" data-caption="watchdogCaption" aria-label="Enlarge Watchdog state machine"><img src="assets/images/watchdog.webp" width="2600" height="1462" loading="lazy" alt="Watchdog finite-state machine with executing, wait, end, replay, recover, replan, done and failed states"><span class="enlarge-hint" data-i18n="enlarge">View full size ↗</span></button><figcaption data-i18n="watchdogCaption">Action-budget exhaustion alone is not success. Subtask completion requires supporting evidence.</figcaption></figure>
+        </article>
+      </div>
+    </section>
+
+    <section class="tasks-section" aria-labelledby="tasks-title">
+      <div class="section container">
+        <div class="section-label" data-i18n="tasksLabel">04 / TASK SUITE</div>
+        <h2 id="tasks-title" data-i18n="tasksTitle">Planning, continuation, and recovery.</h2>
+        <div class="task-cards">
+          <article><span class="task-number">T1</span><h3 data-i18n="task1Title">Sequential tidying</h3><p data-i18n="task1Text">Move two blocks to their target containers and press the button. Tests multi-step composition and subtask switching.</p></article>
+          <article><span class="task-number amber">T2</span><h3 data-i18n="task2Title">Context interruption</h3><p data-i18n="task2Text">Pause T1, clear short-term agent context, and ask the agent to continue. Probes the role of persistent facts.</p></article>
+          <article><span class="task-number purple">T3</span><h3 data-i18n="task3Title">Perturbation recovery</h3><p data-i18n="task3Text">Introduce an empty grasp, a drop, a moved box, or an occlusion. Probes replay, recovery, and replanning.</p></article>
+        </div>
+        <figure class="tasks-figure"><button class="figure-button" type="button" data-figure="assets/images/tasks.png" data-caption="tasksCaption" aria-label="Enlarge T1–T3 task figure"><img src="assets/images/tasks.webp" width="2600" height="1462" loading="lazy" alt="Illustrative T1 sequential tidying, T2 context interruption and T3 perturbation recovery scenes"><span class="enlarge-hint" data-i18n="enlarge">View full size ↗</span></button><figcaption data-i18n="tasksCaption">Task protocol schematic supplied with the paper. Objects and interventions are illustrative; this figure is not a record of individual trials.</figcaption></figure>
+      </div>
+    </section>
+
+    <section class="section container" id="results" aria-labelledby="results-title">
+      <div class="section-label" data-i18n="resultsLabel">05 / EXPERIMENTAL RESULTS</div>
+      <div class="section-heading"><h2 id="results-title" data-i18n="resultsTitle">85% observed task success.</h2><span class="result-meta" data-i18n="trialsMeta">20 trials per configuration</span></div>
+      <p class="section-intro" data-i18n="resultsIntro">All configurations use π0 as the low-level executor on the physical Piper robot. Success requires completing the full instruction, including the final button action.</p>
+      <div class="results-layout">
+        <figure class="result-chart" aria-labelledby="chart-caption">
+          <figcaption id="chart-caption" data-i18n="chartTitle">End-to-end task success</figcaption>
+          <div class="chart-row"><div class="chart-label"><span data-i18n="baseline">Monolithic π0</span><strong>15%</strong></div><div class="chart-track"><span style="width:15%"></span></div><span class="chart-count">3 / 20</span></div>
+          <div class="chart-row"><div class="chart-label"><span data-i18n="decomposition">π0 + subtasks</span><strong>65%</strong></div><div class="chart-track"><span class="blue-bar" style="width:65%"></span></div><span class="chart-count">13 / 20</span></div>
+          <div class="chart-row"><div class="chart-label"><span data-i18n="watchdogConfig">π0 + Watchdog</span><strong>25%</strong></div><div class="chart-track"><span class="purple-bar" style="width:25%"></span></div><span class="chart-count">5 / 20</span></div>
+          <div class="chart-row complete"><div class="chart-label"><span>HarnessVLA</span><strong>85%</strong></div><div class="chart-track"><span class="green-bar" style="width:85%"></span></div><span class="chart-count">17 / 20</span></div>
+          <div class="chart-axis"><span>0%</span><span>50%</span><span>100%</span></div>
+        </figure>
+        <div class="result-interpretation"><span class="big-gain">+70<span data-i18n="pp">pp</span></span><h3 data-i18n="gainTitle">A gap of 14 successful trials.</h3><p data-i18n="gainText">The complete harness exceeds monolithic π0 by 70 percentage points and decomposition alone by 20 points in this evaluated setting.</p><p class="muted" data-i18n="gainCaveat">These are observed differences in aggregate task completion, not estimates of recovery efficiency, latency, or statistical significance.</p></div>
+      </div>
+      <div class="component-heading"><h3 data-i18n="componentTitle">What changes when one component is added?</h3><p data-i18n="componentIntro">Each row adds only the named component to the same monolithic reference. Rows are independent comparisons.</p></div>
+      <div class="table-wrap">
+        <table>
+          <caption class="sr-only" data-i18n="tableCaption">Independent single-component comparisons from V03 Table IV, with the complete system from Table III for reference</caption>
+          <thead><tr><th scope="col" data-i18n="configuration">Configuration</th><th scope="col" data-i18n="successes">Successes</th><th scope="col" data-i18n="successRate">Success rate</th><th scope="col" data-i18n="gainHeader">Change vs. π0</th></tr></thead>
+          <tbody>
+            <tr><th scope="row" data-i18n="baseline">Monolithic π0</th><td>3 / 20</td><td>15%</td><td>—</td></tr>
+            <tr><th scope="row" data-i18n="decomposition">π0 + subtasks</th><td>13 / 20</td><td>65%</td><td>+50 pp</td></tr>
+            <tr><th scope="row" data-i18n="watchdogConfig">π0 + Watchdog</th><td>5 / 20</td><td>25%</td><td>+10 pp</td></tr>
+            <tr><th scope="row" data-i18n="shortTermConfig">π0 + short-term memory</th><td>5 / 20</td><td>25%</td><td>+10 pp</td></tr>
+            <tr><th scope="row" data-i18n="factsConfig">π0 + cross-conversation facts</th><td>4 / 20</td><td>20%</td><td>+5 pp</td></tr>
+            <tr class="highlight-row"><th scope="row" data-i18n="completeConfig">HarnessVLA · complete system</th><td>17 / 20</td><td>85%</td><td>+70 pp</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="table-note" data-i18n="tableNote">Source: V03 Tables III–IV. “pp” means percentage points. A single successful trial changes the rate by 5 points. The complete system is evaluated separately from the single-component configurations.</p>
+      <details class="evidence-details"><summary data-i18n="scopeTitle">Scope of the evidence</summary><div class="prose"><p data-i18n="scope1">The reported counts are aggregated at configuration level and are not broken down by T1, T2, or T3. They do not establish perturbation-specific recovery rates or interruption-specific continuation performance.</p><p data-i18n="scope2">Independent component additions do not measure component interactions or the effect of removing a module from the complete system. Runtime cost, transfer to other robots, and paired statistical tests are not established by these counts.</p><p data-i18n="repoScope">The linked repository is the public implementation. Its current README describes T3 recovery as verified in the mock executor; that implementation scope should be distinguished from the manuscript’s task definitions and aggregate experimental results.</p></div></details>
+    </section>
+
+    <section class="resources-section" id="resources" aria-labelledby="resources-title">
+      <div class="section container">
+        <div class="section-label" data-i18n="resourcesLabel">06 / RESOURCES</div>
+        <h2 id="resources-title" data-i18n="resourcesTitle">Read the manuscript. Explore the code.</h2>
+        <p class="section-intro" data-i18n="resourcesIntro">The English and Chinese V03 manuscripts are research drafts in Word format. The current manuscript uses anonymous authors and does not specify a publication venue or DOI.</p>
+        <div class="download-grid">
+          <a href="assets/papers/HarnessVLA-V03-EN.docx" download><span class="file-type">DOCX</span><span><strong data-i18n="englishPaper">English manuscript</strong><small data-i18n="manuscriptVersion">V03 · Research draft</small></span><span aria-hidden="true">↓</span></a>
+          <a href="assets/papers/HarnessVLA-V03-ZH.docx" download><span class="file-type">DOCX</span><span><strong data-i18n="chinesePaper">Chinese manuscript</strong><small data-i18n="manuscriptVersion">V03 · Research draft</small></span><span aria-hidden="true">↓</span></a>
+          <a href="https://github.com/Flone-zhang/Harness-for-agentic-robot" target="_blank" rel="noopener noreferrer"><span class="file-type">CODE</span><span><strong data-i18n="sourceCode">Source code</strong><small>Flone-zhang / Harness-for-agentic-robot</small></span><span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="container"><a class="brand" href="#main">HarnessVLA</a><p data-i18n="footer">Long-horizon robot manipulation · V03 project page</p><a href="#main" data-i18n="backTop">Back to top ↑</a></footer>
+  <dialog id="figure-dialog" aria-labelledby="figure-dialog-caption">
+    <div class="dialog-toolbar"><span data-i18n="figureViewer">Paper figure</span><button id="close-figure" type="button" aria-label="Close figure">×</button></div>
+    <img id="figure-dialog-image" alt="">
+    <p id="figure-dialog-caption"></p>
+    <a id="figure-original-link" href="assets/images/architecture.png" target="_blank" rel="noopener noreferrer" data-i18n="openOriginal">Open original image ↗</a>
+  </dialog>
+</body>
+</html>
