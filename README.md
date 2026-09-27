@@ -1,5 +1,5 @@
 # HarnessVLA
-
+[论文展示页 / Project Page](https://flone-zhang.github.io/Harness-for-agentic-robot/)
 HarnessVLA 是一个面向 Piper 机械臂的、证据驱动且离线优先的 VLA 任务执行框架。它将受约束的 Qwen 规划、PI0 技能执行、双相机视觉验证和 SQLite 事件记录组合成闭环，并提供无需硬件的模拟路径。
 
 > [!WARNING]
