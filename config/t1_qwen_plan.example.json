@@ -1,0 +1,9 @@
+{
+  "skill_ids": [
+    "pick_red_block",
+    "place_red_in_teal_box",
+    "pick_green_block",
+    "place_green_in_bowl",
+    "press_red_button"
+  ]
+}

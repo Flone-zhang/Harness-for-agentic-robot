@@ -1,0 +1,67 @@
+{
+  "version": 1,
+  "source": "PI0 fine-tuning task registry; task 4 uses the corrected bowl spelling",
+  "execution_enabled": true,
+  "skills": [
+    {
+      "id": "pick_red_block",
+      "source_key": "1",
+      "policy_task": "pick up the red block",
+      "preconditions": [],
+      "adds": ["holding_red_block"],
+      "removes": ["gripper_empty"],
+      "success_predicate": "holding_red_block",
+      "t1_allowed": true
+    },
+    {
+      "id": "place_red_in_teal_box",
+      "source_key": "2",
+      "policy_task": "place the held object in the blue box",
+      "preconditions": ["holding_red_block"],
+      "adds": ["red_in_blue_box", "gripper_empty"],
+      "removes": ["holding_red_block"],
+      "success_predicate": "red_in_blue_box",
+      "t1_allowed": true
+    },
+    {
+      "id": "pick_green_block",
+      "source_key": "3",
+      "policy_task": "pick up the green block",
+      "preconditions": ["red_in_blue_box"],
+      "adds": ["holding_green_block"],
+      "removes": ["gripper_empty"],
+      "success_predicate": "holding_green_block",
+      "t1_allowed": true
+    },
+    {
+      "id": "place_green_in_bowl",
+      "source_key": "4",
+      "policy_task": "place the held object in the bowl",
+      "preconditions": ["holding_green_block"],
+      "adds": ["green_in_bowl", "gripper_empty"],
+      "removes": ["holding_green_block"],
+      "success_predicate": "green_in_bowl",
+      "t1_allowed": true
+    },
+    {
+      "id": "press_red_button",
+      "source_key": "5",
+      "policy_task": "press the red button",
+      "preconditions": ["red_in_blue_box", "green_in_bowl"],
+      "adds": ["red_button_triggered"],
+      "removes": [],
+      "success_predicate": "red_button_triggered",
+      "t1_allowed": true
+    },
+    {
+      "id": "return_home",
+      "source_key": "6",
+      "policy_task": "return to home position",
+      "preconditions": ["red_button_triggered"],
+      "adds": ["at_home"],
+      "removes": [],
+      "success_predicate": "at_home",
+      "t1_allowed": false
+    }
+  ]
+}

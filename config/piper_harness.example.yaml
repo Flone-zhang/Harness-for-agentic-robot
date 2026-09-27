@@ -1,0 +1,72 @@
+# Template for config/piper_harness.yaml. Keep machine-specific values in the copied file.
+# PyCharm script: <project-root>/run_harness.py
+# Parameters: --config_path=config/piper_harness.yaml
+schema_version: 1
+
+run:
+  console_status: true  # print current skill, accumulated actions and Qwen verdicts
+  # mock_t1: offline T1 simulation with SQLite events.
+  # pi0_check: inspect the new checkpoint without connecting to robot/cameras.
+  # pi0_server: start the local PI0 inference service without connecting to robot.
+  # pi0_preview: read Piper/cameras and log predictions; no motor commands.
+  # pi0_execute: run one bounded PI0 skill; requires motion_enabled: true.
+  # qwen_plan: request skill IDs only; no execution.
+  # qwen_pi0: inspect current goals, plan one registered skill, execute and verify.
+  mode: mock_t1
+  # Used only by mock_t1/qwen_plan; qwen_pi0 derives continuation from camera evidence.
+  task_id: T1
+  # qwen_pi0 sends this total task to Qwen; it is not hardcoded in Python.
+  task_command: "put the red block in the blue box, and put the green block in the bowl, then press the red button"
+  db: runs/harnessvla.sqlite3  # mock and live state/event database
+  mock_config: config/pycharm.yaml
+
+pi0:
+  checkpoint: weights/pi0
+  task: "pick up the red block"  # pi0_execute/preview only; qwen_pi0 uses each registered skill
+  device: cuda:0
+  server_address: 127.0.0.1:8081
+  can_port: can_left_f
+  fps: 20
+  max_joint_step: 0.02
+  max_gripper_step: 0.002
+  motion_enabled: false
+  max_actions: 20  # pi0_execute only; qwen_pi0 uses verification_interval_actions
+  # qwen_pi0 only: set motion_enabled true after the staged checks.
+  # Replace with the SHA-256 of the checkpoint used for a supervised live run.
+  expected_model_sha256: "0000000000000000000000000000000000000000000000000000000000000000"
+  verification_interval_actions: 50  # pause for Qwen vision, then continue if unfinished
+  # Controlled early stop after PI0 settles at its dataset wait pose without visual success.
+  wait_pose_min_actions: 200
+  wait_pose_stable_intervals: 2
+  wait_pose_joint_range: 0.015
+  wait_pose_gripper_range: 0.001
+  reset_hz: 100.0
+  reset_duration_s: 4.0
+  reset_max_joint_step: 0.01
+  home_gripper: 0.07
+  hash_model: false
+  check_processors: false
+  smoke_inference: false
+  cameras:
+    cam_top:
+      serial_number_or_name: "REPLACE_WITH_TOP_CAMERA_SERIAL"
+      width: 640
+      height: 480
+      fps: 30
+    cam_left:
+      serial_number_or_name: "REPLACE_WITH_WRIST_CAMERA_SERIAL"
+      width: 640
+      height: 480
+      fps: 30
+
+qwen:
+  api_key: ""
+  model: qwen3.8-flash
+  base_url: https://dashscope.aliyuncs.com/compatible-mode/v1
+  timeout_s: 120
+  enable_thinking: true
+  action_budget: 20  # qwen_plan only; not a live PI0 execution limit
+  subtask_timeout_s: 60  # PI0 execution time only; Qwen visual-check latency is excluded
+  visual_verification_retries: 1
+  jpeg_quality: 85
+  verified_predicates: []

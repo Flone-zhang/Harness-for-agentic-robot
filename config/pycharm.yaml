@@ -1,0 +1,15 @@
+# HarnessVLA mock T1 run configuration.
+# PyCharm Python run configuration:
+#   Module name: harnessvla.cli
+#   Parameters: start --config config/pycharm.yaml
+#   Working directory: <project-root>
+# This YAML is configuration data, not a Python script; it never enables Piper motion.
+mode: mock
+task_timeout_s: 300
+subtask_timeout_s: 60
+action_budget: 8
+max_attempts: 2
+max_replans: 1
+max_observation_waits: 2
+max_observation_age_s: 1.0
+checkpoint_id: none-mock-only
