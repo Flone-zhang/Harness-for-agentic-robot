@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="HarnessVLA V04: stateful robot manipulation with dynamic memory and object bound skills. Piper block tasks, tube liquid transfer, and persistent rule-access experiments.">
+  <meta name="theme-color" content="#126352">
+  <meta property="og:title" content="HarnessVLA — Stateful Robot Manipulation">
+  <meta property="og:description" content="Explore the V04 method, Piper block and tube demonstrations, transfer results, and persistent rule-memory tests.">
+  <meta property="og:type" content="website">
+  <title>HarnessVLA | Stateful Robot Manipulation</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='10' fill='%23126352'/%3E%3Cpath d='M11 10v20m18-20v20M11 20h18' stroke='white' stroke-width='4'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="assets/styles.css">
+  <script src="assets/script.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main" data-i18n="skip">Skip to content</a>
+  <header class="site-header">
+    <div class="nav-wrap">
+      <a class="brand" href="#main" aria-label="HarnessVLA home"><span class="brand-mark" aria-hidden="true">H</span>HarnessVLA</a>
+      <nav aria-label="Main navigation">
+        <a href="#overview" data-i18n="navOverview">Overview</a>
+        <a href="#demo" data-i18n="navDemo">Demo</a>
+        <a href="#method" data-i18n="navMethod">Method</a>
+        <a href="#results" data-i18n="navResults">Results</a>
+      </nav>
+      <button class="language-button" id="language-toggle" type="button" aria-label="切换为中文">中文 <span aria-hidden="true">↔</span></button>
+    </div>
+  </header>
+  <main id="main">
+    <section class="hero container" aria-labelledby="paper-title">
+      <div class="eyebrow"><span data-i18n="heroTag">LONG-HORIZON ROBOT MANIPULATION</span><span class="draft-tag" data-i18n="draftTag">V04 · Research draft</span></div>
+      <h1 id="paper-title"><span class="hero-name">Harness<span>VLA</span></span><span class="hero-title" data-i18n="title">for Stateful Robot Manipulation with Dynamic Memory and Object Bound Skills</span></h1>
+      <p class="hero-description" data-i18n="heroDescription">A fixed π0 executor with grounded skill calls, verified task state, and persistent access to supplied constraints.</p>
+      <p class="author-line" data-i18n="authors">Zhang Haolin · V04 manuscript</p>
+      <div class="resource-links">
+        <button class="button primary" id="paper-download" type="button" disabled aria-disabled="true"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M7 3h7l4 4v14H7zM14 3v5h4M10 12h5m-5 4h5"/></svg><span data-i18n="paperButton">Paper · Coming soon</span></button>
+        <a class="button" href="https://github.com/Flone-zhang/Harness-for-agentic-robot" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="m8 7-5 5 5 5m8-10 5 5-5 5m-3-12-2 14"/></svg><span data-i18n="codeButton">Code</span></a>
+        <a class="button" href="#demo"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="m9 5 11 7-11 7z"/></svg><span data-i18n="demoButton">Watch demo</span></a>
+      </div>
+      <div class="hero-evidence">
+        <div><strong>85<span>%</span></strong><span data-i18n="stat1">Blocks · 17 / 20 successes</span></div>
+        <div><strong>85<span>%</span></strong><span data-i18n="stat2">A–B transfer · 34 / 40 successes</span></div>
+        <div><strong>95<span>%</span></strong><span data-i18n="stat3">A–C refusal after reset · 19 / 20</span></div>
+      </div>
+      <figure class="architecture-figure">
+        <button class="figure-button" type="button" data-figure="assets/images/architecture.png" data-caption="architectureCaption" aria-label="Enlarge architecture figure">
+          <img src="assets/images/architecture.webp" width="2600" height="1462" alt="HarnessVLA architecture: decision, planning, execution and Watchdog monitoring around dynamic memory and the Piper robot" fetchpriority="high">
+          <span class="enlarge-hint" data-i18n="enlarge">View full size ↗</span>
+        </button>
+        <figcaption data-i18n="architectureCaption">The V04 control loop connects decision, planning, execution, and Watchdog monitoring. The reported experiments use a fixed π0 executor.</figcaption>
+      </figure>
+    </section>
+
+    <section class="section container overview" id="overview" aria-labelledby="overview-title">
+      <div class="section-label" data-i18n="overviewLabel">01 / OVERVIEW</div>
+      <div class="section-grid">
+        <h2 id="overview-title" data-i18n="overviewTitle">Keep identity, state, and execution aligned.</h2>
+        <div class="prose">
+          <p data-i18n="abstract1">Long-horizon manipulation requires task-state maintenance and verification of physical effects beyond continuous action generation. HarnessVLA coordinates subtask decomposition, dynamic memory, fact-validity checks, and monitoring around a fixed π0 executor.</p>
+          <p data-i18n="abstract2">Piper experiments cover blocks and a final button press, plus tube liquid transfer with substance identities, exchanged rack positions, and a supplied prohibited combination. Block success is 17/20 (85%) versus 3/20 (15%) for monolithic π0; A–B transfer reaches 34/40 (85%) versus 23/40 (57.5%) for full-instruction π0.</p>
+          <p data-i18n="abstract3">After short-term context reset, correct A–C refusal is 19/20 (95%) with persistent rule access and 0/20 without it. The rule-in-context reference reaches 20/20 (100%), and all three rule conditions have 0/20 false A–B refusals.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="demo-section" id="demo" aria-labelledby="demo-title">
+      <div class="container section">
+        <div class="section-label" data-i18n="demoLabel">02 / IN THE REAL WORLD</div>
+        <div class="section-heading"><h2 id="demo-title" data-i18n="demoTitle">Block and tube manipulation on Piper.</h2><span class="video-meta">T1 · 01:45 · Piper</span></div>
+        <p class="demo-description" data-i18n="demoDescription">T1: place the red block in the blue box, place the green block in the bowl, then press the red button.</p>
+        <div class="video-shell">
+          <video id="t1-video" controls playsinline preload="metadata" poster="assets/images/t1-poster.jpg" aria-label="T1 sequential tidying demonstration on the Piper robot">
+            <source src="assets/videos/T1_edited.mp4" type="video/mp4">
+            <p data-i18n="videoFallback">Your browser cannot play this video. Use the download link below.</p>
+          </video>
+        </div>
+        <div class="video-caption"><p data-i18n="videoCaption">Edited T1 demonstration. The clip illustrates execution; the reported success rates come from the manuscript’s trial counts.</p><a href="assets/videos/T1_edited.mp4" download data-i18n="downloadVideo">Download video ↓</a></div>
+        <p id="video-error" class="video-error" data-video-error="t1-video" hidden data-i18n="videoError">The video could not be loaded. Please try the download link.</p>
+        <div class="tube-demo-heading">
+          <h3 data-i18n="tubeDemoTitle">Tube liquid transfer under exchanged positions.</h3>
+          <p data-i18n="tubeDemoIntro">The two supplied clips show red A and yellow B being transferred into the beaker and their tubes placed in the waste container.</p>
+        </div>
+        <div class="demo-grid">
+          <article class="demo-card">
+            <div class="demo-card-heading"><h3 data-i18n="g1DemoTitle">G1 · A at 1, B at 2</h3><span class="video-meta">02:13 · Piper</span></div>
+            <div class="video-shell">
+              <video id="tube-g1-video" controls playsinline preload="metadata" poster="assets/images/tube-g1-poster.jpg" aria-label="Red A and yellow B tube transfer, G1 arrangement">
+                <source src="assets/videos/tube_AB_G1.mp4" type="video/mp4">
+                <p data-i18n="videoFallback">Your browser cannot play this video. Use the download link below.</p>
+              </video>
+            </div>
+            <div class="video-caption"><p data-i18n="g1DemoCaption">Red A is in slot 1 and yellow B is in slot 2.</p><a href="assets/videos/tube_AB_G1.mp4" download data-i18n="downloadVideo">Download video ↓</a></div>
+            <p class="video-error" data-video-error="tube-g1-video" hidden data-i18n="videoError">The video could not be loaded. Please try the download link.</p>
+          </article>
+          <article class="demo-card">
+            <div class="demo-card-heading"><h3 data-i18n="g2DemoTitle">G2 · A at 2, B at 1</h3><span class="video-meta">02:27 · Piper</span></div>
+            <div class="video-shell">
+              <video id="tube-g2-video" controls playsinline preload="metadata" poster="assets/images/tube-g2-poster.jpg" aria-label="Red A and yellow B tube transfer, G2 arrangement">
+                <source src="assets/videos/tube_AB_G2.mp4" type="video/mp4">
+                <p data-i18n="videoFallback">Your browser cannot play this video. Use the download link below.</p>
+              </video>
+            </div>
+            <div class="video-caption"><p data-i18n="g2DemoCaption">The same substances exchange their rack positions.</p><a href="assets/videos/tube_AB_G2.mp4" download data-i18n="downloadVideo">Download video ↓</a></div>
+            <p class="video-error" data-video-error="tube-g2-video" hidden data-i18n="videoError">The video could not be loaded. Please try the download link.</p>
+          </article>
+        </div>
+        <p class="demo-note" data-i18n="demoOrderNote">These demonstration clips process B (yellow) before A (red); the manuscript illustrates an A-first plan. They show the operations and exchanged positions, while the reported trial counts are presented separately below.</p>
+
+      </div>
+    </section>
+
+    <section class="section container" id="method" aria-labelledby="method-title">
+      <div class="section-label" data-i18n="methodLabel">03 / METHOD</div>
+      <h2 id="method-title" data-i18n="methodTitle">An explicit loop around the policy.</h2>
+      <p class="section-intro" data-i18n="methodIntro">Only the execution layer drives the robot. The runtime grounds requested objects, checks supplied constraints, and advances only after evidence supports each physical effect.</p>
+      <ol class="method-flow">
+        <li><span class="flow-number">01</span><h3 data-i18n="flow1Title">Decide</h3><p data-i18n="flow1Text">Read persistent knowledge, current observations, and task state before choosing a call.</p></li>
+        <li><span class="flow-number">02</span><h3 data-i18n="flow2Title">Plan</h3><p data-i18n="flow2Text">Generate ordered, object-bound calls with preconditions and completion predicates.</p></li>
+        <li><span class="flow-number">03</span><h3 data-i18n="flow3Title">Execute</h3><p data-i18n="flow3Text">Invoke registered skills through the fixed π0 executor with a unique ID for each call.</p></li>
+        <li><span class="flow-number">04</span><h3 data-i18n="flow4Title">Verify</h3><p data-i18n="flow4Text">Verify the specific physical effect before committing state or advancing.</p></li>
+      </ol>
+      <div class="binding-section">
+        <h3 data-i18n="bindingTitle">Substance identity, scene position, and skill invocation.</h3>
+        <p data-i18n="bindingIntro">A position swap changes the scene binding, while substance identity and the registered grasp skills stay stable.</p>
+        <div class="binding-grid">
+          <div><span class="binding-step" data-i18n="bindingKnowledgeLabel">PERSISTENT KNOWLEDGE</span><strong data-i18n="bindingKnowledge">A = red · B = yellow · C = blue · D = green</strong><p data-i18n="bindingRule">The supplied rule prohibits the A–C combination.</p></div>
+          <div><span class="binding-step" data-i18n="bindingSceneLabel">FRESH OBSERVATION</span><strong data-i18n="bindingScene">G1: A → 1, B → 2 · G2: A → 2, B → 1</strong><p data-i18n="bindingSceneText">Read current positions from the scene; invalidate contradictory old bindings.</p></div>
+          <div><span class="binding-step" data-i18n="bindingCallLabel">OBJECT-BOUND CALL</span><strong>grasp(position) → pour → discard_tube</strong><p data-i18n="bindingCallText">A unique invocation ID keeps each tube’s completion evidence separate, even when skills are reused.</p></div>
+        </div>
+      </div>
+      <div class="method-details">
+        <article>
+          <div class="detail-heading"><span class="detail-index">M</span><h3 data-i18n="memoryTitle">Persistent knowledge meets fresh scene state.</h3></div>
+          <p data-i18n="memoryText">For tubes, Mₜ = {L, Eₜ, Tₜ, K}: L contains the supplied color map and prohibited pair; Eₜ holds current scene bindings; Tₜ tracks each tube’s stage; K stores skill definitions. Fresh observations invalidate obsolete positions.</p>
+          <figure><button class="figure-button" type="button" data-figure="assets/images/memory.png" data-caption="memoryCaption" aria-label="Enlarge dynamic memory figure"><img src="assets/images/memory.webp" width="2600" height="1462" loading="lazy" alt="Dynamic memory retrieval with task, tool, environment and persistent facts; validity filtering and contradiction checks"><span class="enlarge-hint" data-i18n="enlarge">View full size ↗</span></button><figcaption data-i18n="memoryCaption">V04 Fig. 2 combines tube and block examples. Persistent identity and rule knowledge are filtered for validity and combined with current observations and task state.</figcaption></figure>
+        </article>
+        <article>
+          <div class="detail-heading"><span class="detail-index purple">W</span><h3 data-i18n="watchdogTitle">Bounded recovery, explicit transitions.</h3></div>
+          <p data-i18n="watchdogText">Block execution uses bounded wait, end, replay, recovery, and suffix replanning. In the tube protocol, failed, uncertain, or exhausted calls stop downstream execution rather than committing an unverified effect.</p>
+          <figure><button class="figure-button" type="button" data-figure="assets/images/watchdog.png" data-caption="watchdogCaption" aria-label="Enlarge Watchdog state machine"><img src="assets/images/watchdog.webp" width="2600" height="1462" loading="lazy" alt="Watchdog finite-state machine with executing, wait, end, replay, recover, replan, done and failed states"><span class="enlarge-hint" data-i18n="enlarge">View full size ↗</span></button><figcaption data-i18n="watchdogCaption">V04 Fig. 3 describes the block Watchdog. The tube study does not establish autonomous tube recovery.</figcaption></figure>
+        </article>
+      </div>
+    </section>
+
+    <section class="tasks-section" aria-labelledby="tasks-title">
+      <div class="section container">
+        <div class="section-label" data-i18n="tasksLabel">04 / BLOCK AND BUTTON TASKS</div>
+        <h2 id="tasks-title" data-i18n="tasksTitle">The block benchmark and its task conditions.</h2>
+        <div class="task-cards">
+          <article><span class="task-number">T1</span><h3 data-i18n="task1Title">Sequential tidying</h3><p data-i18n="task1Text">Move two blocks to their target containers and press the button. Tests multi-step composition and subtask switching.</p></article>
+          <article><span class="task-number amber">T2</span><h3 data-i18n="task2Title">Context interruption</h3><p data-i18n="task2Text">Pause T1, clear short-term agent context, and ask the agent to continue. Probes the role of persistent facts.</p></article>
+          <article><span class="task-number purple">T3</span><h3 data-i18n="task3Title">Perturbation recovery</h3><p data-i18n="task3Text">Introduce an empty grasp, a drop, a moved box, or an occlusion. Probes replay, recovery, and replanning.</p></article>
+        </div>
+        <figure class="tasks-figure"><button class="figure-button" type="button" data-figure="assets/images/tasks.png" data-caption="tasksCaption" aria-label="Enlarge T1–T3 task figure"><img src="assets/images/tasks.webp" width="2600" height="1462" loading="lazy" alt="Illustrative T1 sequential tidying, T2 context interruption and T3 perturbation recovery scenes"><span class="enlarge-hint" data-i18n="enlarge">View full size ↗</span></button><figcaption data-i18n="tasksCaption">Task protocol schematic supplied with the paper. Objects and interventions are illustrative; this figure is not a record of individual trials.</figcaption></figure>
+      </div>
+    </section>
+
+    <section class="section container" id="results" aria-labelledby="results-title">
+      <div class="section-label" data-i18n="resultsLabel">05 / BLOCK RESULTS</div>
+      <div class="section-heading"><h2 id="results-title" data-i18n="resultsTitle">Blocks and buttons: 85% versus 15%.</h2><span class="result-meta" data-i18n="trialsMeta">20 trials per block configuration</span></div>
+      <p class="section-intro" data-i18n="resultsIntro">All block configurations use π0 as the low-level executor on the physical Piper robot. Success requires the full instruction, including the final button action.</p>
+      <div class="results-layout">
+        <figure class="result-chart" aria-labelledby="chart-caption">
+          <figcaption id="chart-caption" data-i18n="chartTitle">Block-and-button task success</figcaption>
+          <div class="chart-row"><div class="chart-label"><span data-i18n="baseline">Monolithic π0</span><strong>15%</strong></div><div class="chart-track"><span style="width:15%"></span></div><span class="chart-count">3 / 20</span></div>
+          <div class="chart-row"><div class="chart-label"><span data-i18n="decomposition">π0 + subtasks</span><strong>65%</strong></div><div class="chart-track"><span class="blue-bar" style="width:65%"></span></div><span class="chart-count">13 / 20</span></div>
+          <div class="chart-row"><div class="chart-label"><span data-i18n="watchdogConfig">π0 + Watchdog</span><strong>25%</strong></div><div class="chart-track"><span class="purple-bar" style="width:25%"></span></div><span class="chart-count">5 / 20</span></div>
+          <div class="chart-row complete"><div class="chart-label"><span>HarnessVLA</span><strong>85%</strong></div><div class="chart-track"><span class="green-bar" style="width:85%"></span></div><span class="chart-count">17 / 20</span></div>
+          <div class="chart-axis"><span>0%</span><span>50%</span><span>100%</span></div>
+        </figure>
+        <div class="result-interpretation"><span class="big-gain">+70<span data-i18n="pp">pp</span></span><h3 data-i18n="gainTitle">A gap of 14 successful trials.</h3><p data-i18n="gainText">The complete harness exceeds monolithic π0 by 70 percentage points and decomposition alone by 20 points in this evaluated setting.</p><p class="muted" data-i18n="gainCaveat">These are observed differences in aggregate task completion, not estimates of recovery efficiency, latency, or statistical significance.</p></div>
+      </div>
+      <div class="component-heading"><h3 data-i18n="componentTitle">What changes when one component is added?</h3><p data-i18n="componentIntro">Each row adds only the named component to the same monolithic reference. Rows are independent comparisons.</p></div>
+      <div class="table-wrap">
+        <table>
+          <caption class="sr-only" data-i18n="tableCaption">Independent block component comparisons from V04 Table IV, with the complete system from Table III</caption>
+          <thead><tr><th scope="col" data-i18n="configuration">Configuration</th><th scope="col" data-i18n="successes">Successes</th><th scope="col" data-i18n="successRate">Success rate</th><th scope="col" data-i18n="gainHeader">Change vs. π0</th></tr></thead>
+          <tbody>
+            <tr><th scope="row" data-i18n="baseline">Monolithic π0</th><td>3 / 20</td><td>15%</td><td>—</td></tr>
+            <tr><th scope="row" data-i18n="decomposition">π0 + subtasks</th><td>13 / 20</td><td>65%</td><td>+50 pp</td></tr>
+            <tr><th scope="row" data-i18n="watchdogConfig">π0 + Watchdog</th><td>5 / 20</td><td>25%</td><td>+10 pp</td></tr>
+            <tr><th scope="row" data-i18n="shortTermConfig">π0 + short-term memory</th><td>5 / 20</td><td>25%</td><td>+10 pp</td></tr>
+            <tr><th scope="row" data-i18n="factsConfig">π0 + cross-conversation facts</th><td>4 / 20</td><td>20%</td><td>+5 pp</td></tr>
+            <tr class="highlight-row"><th scope="row" data-i18n="completeConfig">HarnessVLA · complete system</th><td>17 / 20</td><td>85%</td><td>+70 pp</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="table-note" data-i18n="tableNote">Source: V04 Tables III–IV. “pp” means percentage points. Each successful block trial changes the rate by 5 points. The complete system is evaluated separately.</p>
+      <details class="evidence-details"><summary data-i18n="scopeTitle">Scope of the evidence</summary><div class="prose"><p data-i18n="scope1">Block results are aggregated by configuration, without separate T1–T3 counts. The new tube rule-memory experiment below is a distinct context-reset test.</p><p data-i18n="scope2">Independent component additions do not measure component interactions or the effect of removing a module from the complete system. Runtime cost, transfer to other robots, and paired statistical tests are not established by these counts.</p><p data-i18n="repoScope">Figures and demonstrations illustrate the mechanism. Aggregate outcomes do not provide per-trial timing or a measured failure distribution.</p></div></details>
+    </section>
+
+    <section class="tube-section" id="tube" aria-labelledby="tube-title">
+      <div class="section container">
+        <div class="section-label" data-i18n="tubeLabel">06 / TUBE EXPERIMENT</div>
+        <h2 id="tube-title" data-i18n="tubeTitle">Transfer the right substances. Retain the supplied rule.</h2>
+        <p class="section-intro" data-i18n="tubeIntro">A four-position rack, one beaker, and a waste container form the second Piper task. A–B requests are allowed; A–C requests are prohibited by an explicitly supplied rule.</p>
+        <figure class="tasks-figure">
+          <button class="figure-button" type="button" data-figure="assets/images/tube.png" data-caption="tubeCaption" aria-label="Enlarge tube liquid transfer experiment figure">
+            <img src="assets/images/tube.webp" width="2600" height="1462" loading="lazy" alt="Tube experiment: allowed A–B transfers in G1 and G2 exchanged positions, and refusal of a prohibited A–C request">
+            <span class="enlarge-hint" data-i18n="enlarge">View full size ↗</span>
+          </button>
+          <figcaption data-i18n="tubeCaption">V04 Fig. 5: the allowed A–B task uses two exchanged arrangements. The A–C panel illustrates rejection before execution under the supplied prohibition.</figcaption>
+        </figure>
+        <div class="tube-protocol">
+          <div><h3 data-i18n="protocolTitle">Six calls, with evidence for each tube.</h3><p data-i18n="protocolText">Each requested tube is grasped, poured into the beaker, and discarded before the next grasp. The registry contains grasp1–grasp4, pour, and discard_tube.</p></div>
+          <div><h3 data-i18n="completionTitle">Completion requires physical effects.</h3><p data-i18n="completionText">Both requested liquids must enter the beaker and both tubes must reach the waste container. The tested endpoint does not require stirring, a measured volume, or a chemical reaction.</p></div>
+        </div>
+
+        <div class="component-heading"><h3 data-i18n="tubeResultsTitle">A–B transfer: 85% versus 57.5%.</h3><p data-i18n="tubeResultsIntro">Both methods use the same π0 checkpoint, camera views, platform, and completion criteria. Each method is tested 20 times per arrangement: 40 trials per method, 80 in total.</p></div>
+        <div class="tube-result-summary">
+          <div><strong>34 / 40</strong><span data-i18n="tubeHarnessStat">HarnessVLA · 85%</span></div>
+          <div><strong>23 / 40</strong><span data-i18n="tubeBaselineStat">Full-instruction π0 · 57.5%</span></div>
+          <div><strong>+27.5 <span data-i18n="pp">pp</span></strong><span data-i18n="tubeGainStat">11 additional successful trials</span></div>
+        </div>
+        <div class="table-wrap">
+          <table id="tube-results-table">
+            <caption class="sr-only" data-i18n="tubeTableCaption">V04 Tables VII–VIII: A–B liquid transfer results in two arrangements</caption>
+            <thead><tr><th scope="col" data-i18n="arrangement">Arrangement</th><th scope="col" data-i18n="fullInstruction">Full-instruction π0</th><th scope="col">HarnessVLA</th><th scope="col" data-i18n="gainHeader">Change vs. π0</th></tr></thead>
+            <tbody>
+              <tr><th scope="row" data-i18n="g1Arrangement">G1 · A at 1, B at 2</th><td>11 / 20 · 55%</td><td>16 / 20 · 80%</td><td>+25 pp</td></tr>
+              <tr><th scope="row" data-i18n="g2Arrangement">G2 · A at 2, B at 1</th><td>12 / 20 · 60%</td><td>18 / 20 · 90%</td><td>+30 pp</td></tr>
+              <tr class="highlight-row"><th scope="row" data-i18n="combinedArrangements">G1 + G2</th><td>23 / 40 · 57.5%</td><td>34 / 40 · 85%</td><td>+27.5 pp</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="table-note" data-i18n="tubeTableNote">Source: V04 Tables VII–VIII. This compares complete systems; it does not isolate individual modules, target-selection accuracy, or execution efficiency.</p>
+
+        <div class="rule-section" id="rule-memory">
+          <div class="component-heading"><h3 data-i18n="ruleTitle">After a context reset, access to the rule matters.</h3><p data-i18n="ruleIntro">The same agent interface is tested under three rule-access conditions. Each condition has 20 A–C requests and 20 allowed A–B requests on the physical Piper platform.</p></div>
+          <div class="table-wrap">
+            <table id="rule-results-table">
+              <caption class="sr-only" data-i18n="ruleTableCaption">V04 Table IX: correct A–C refusal and false A–B refusal</caption>
+              <thead><tr><th scope="col" data-i18n="ruleCondition">Rule-access condition</th><th scope="col" data-i18n="correctRefusal">Correct A–C refusal</th><th scope="col" data-i18n="falseRefusal">False A–B refusal</th></tr></thead>
+              <tbody>
+                <tr><th scope="row" data-i18n="ruleCurrent">Rule in current context</th><td>20 / 20 · 100%</td><td>0 / 20 · 0%</td></tr>
+                <tr class="highlight-row"><th scope="row" data-i18n="rulePersistent">Reset · persistent rule access</th><td>19 / 20 · 95%</td><td>0 / 20 · 0%</td></tr>
+                <tr><th scope="row" data-i18n="ruleNoAccess">Reset · persistent rule access disabled</th><td>0 / 20 · 0%</td><td>0 / 20 · 0%</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="table-note" data-i18n="ruleTableNote">Source: V04 Table IX. Correct refusal requires a rule-consistent explanation, zero executor calls, and no commanded task motion. Stillness or an unrelated failure is not correct refusal.</p>
+          <p class="rule-interpretation" data-i18n="ruleInterpretation">Persistent access produces a 95-percentage-point correct-refusal difference after reset. Zero false A–B refusals in every condition indicates that the observed A–C refusals are not produced by rejecting all requests.</p>
+        </div>
+
+        <details class="evidence-details"><summary data-i18n="tubeScopeTitle">What these tube experiments establish</summary><div class="prose">
+          <p data-i18n="tubeScope1">A–B success measures physical transfer and disposal; A–C refusal measures access to a supplied prohibition. These are separate outcomes and cannot be combined into one success rate.</p>
+          <p data-i18n="tubeScope2">The tested arrangement exchange concerns A, B, and slots 1–2. It does not establish four-position performance, autonomous tube recovery, chemical-compatibility inference, or cross-robot transfer.</p>
+          <p data-i18n="tubeScope3">Failure to refuse correctly does not by itself establish that a prohibited transfer occurred. The rule is supplied rather than autonomously learned, and aggregate counts do not determine failure categories or runtime cost.</p>
+        </div></details>
+      </div>
+    </section>
+
+    <section class="resources-section" id="resources" aria-labelledby="resources-title">
+      <div class="section container">
+        <div class="section-label" data-i18n="resourcesLabel">07 / RESOURCES</div>
+        <h2 id="resources-title" data-i18n="resourcesTitle">Explore the method and the code.</h2>
+        <p class="section-intro" data-i18n="resourcesIntro">The manuscript is not available for download yet. Explore the public implementation below.</p>
+        <div class="download-grid">
+          <a href="https://github.com/Flone-zhang/Harness-for-agentic-robot" target="_blank" rel="noopener noreferrer"><span class="file-type">CODE</span><span><strong data-i18n="sourceCode">Source code</strong><small>Flone-zhang / Harness-for-agentic-robot</small></span><span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="container"><a class="brand" href="#main">HarnessVLA</a><p data-i18n="footer">Stateful robot manipulation · V04 project page</p><a href="#main" data-i18n="backTop">Back to top ↑</a></footer>
+  <dialog id="figure-dialog" aria-labelledby="figure-dialog-caption">
+    <div class="dialog-toolbar"><span data-i18n="figureViewer">Paper figure</span><button id="close-figure" type="button" aria-label="Close figure">×</button></div>
+    <img id="figure-dialog-image" alt="">
+    <p id="figure-dialog-caption"></p>
+    <a id="figure-original-link" href="assets/images/architecture.png" target="_blank" rel="noopener noreferrer" data-i18n="openOriginal">Open original image ↗</a>
+  </dialog>
+</body>
+</html>
